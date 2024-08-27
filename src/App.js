@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import notesService from './services/notesService';
-import Note from './pages/note';
-import NoteDetail from './component/NoteDetails'
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import notesService from "./services/notesService";
+import Note from "./pages/note";
+import NoteDetail from "./component/NoteDetails";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [currentNoteId, setCurrentNoteId] = useState(null);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const App = () => {
       const notesData = await notesService.getNotes();
       setNotes(notesData);
     } catch (error) {
-      console.error('Error fetching notes:', error);
+      console.error("Error fetching notes:", error);
     }
   };
 
@@ -30,7 +30,7 @@ const App = () => {
       setContent(note.content);
       setCurrentNoteId(note.id);
     } catch (error) {
-      console.error('Error fetching note:', error);
+      console.error("Error fetching note:", error);
     }
   };
 
@@ -43,11 +43,11 @@ const App = () => {
         } else {
           await notesService.addNote({ title, content });
         }
-        setTitle('');
-        setContent('');
+        setTitle("");
+        setContent("");
         fetchNotes();
       } catch (error) {
-        console.error('Error adding/updating note:', error);
+        console.error("Error adding/updating note:", error);
       }
     }
   };
@@ -57,14 +57,14 @@ const App = () => {
       await notesService.deleteNote(id);
       fetchNotes();
     } catch (error) {
-      console.error('Error deleting note:', error);
+      console.error("Error deleting note:", error);
     }
   };
 
   return (
     <Router>
       <div className="App">
-        <h1>Notes</h1>
+        <header class="header-title">Notes</header>
         <div>
           <input
             type="text"
@@ -78,7 +78,7 @@ const App = () => {
             onChange={(e) => setContent(e.target.value)}
           />
           <button onClick={addOrUpdateNote}>
-            {currentNoteId ? 'Update Note' : 'Add Note'}
+            {currentNoteId ? "Update Note" : "Add Note"}
           </button>
         </div>
         <Routes>
@@ -86,7 +86,7 @@ const App = () => {
             path="/"
             element={
               <div className="notes">
-                {notes.map(note => (
+                {notes.map((note) => (
                   <Note
                     key={note.id}
                     note={note}
@@ -97,11 +97,11 @@ const App = () => {
               </div>
             }
           />
-          <Route
-            path="/note/:id"
-            element={<NoteDetail notes={notes} />}
-          />
+          <Route path="/note/:id" element={<NoteDetail notes={notes} />} />
         </Routes>
+        <footer className="footer">
+        © 2023 Notes App. All rights reserved.
+      </footer>
       </div>
     </Router>
   );
