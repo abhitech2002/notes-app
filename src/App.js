@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import notesService from "./services/notesService";
 import Note from "./pages/note";
 import NoteDetail from "./component/NoteDetails";
-import Modal from "./component/Modal"; 
+import Modal from "./component/Modal";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [currentNoteId, setCurrentNoteId] = useState(null);
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     fetchNotes();
@@ -31,6 +31,7 @@ const App = () => {
       setTitle(note.title);
       setContent(note.content);
       setCurrentNoteId(note.id);
+      setShowModal(true); 
     } catch (error) {
       console.error("Error fetching note:", error);
     }
@@ -48,13 +49,12 @@ const App = () => {
         setTitle("");
         setContent("");
         fetchNotes();
-        setShowModal(false);
+        setShowModal(false); 
       } catch (error) {
         console.error("Error adding/updating note:", error);
       }
     }
   };
-
 
   const deleteNote = async (id) => {
     try {
