@@ -1,0 +1,62 @@
+.note-detail-wrapper {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.note-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.note-detail-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.note-detail-back-button {
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.note-detail-back-button:hover {
+  background-color: #e65c54;
+}
+
+.note-detail-content {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.note-detail-text {
+  margin-bottom: 20px;
+}
+
+.note-detail-date {
+  display: block;
+  font-size: 0.875rem;
+  color: #888;
+}
+
+.note-detail-not-found {
+  font-size: 1rem;
+  color: #d9534f;
+  text-align: center;
+  margin-top: 20px;
+}
